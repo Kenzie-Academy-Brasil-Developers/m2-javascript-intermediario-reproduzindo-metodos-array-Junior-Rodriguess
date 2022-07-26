@@ -1,50 +1,38 @@
-// Método Map ---------
-
-const arrayMap = [1, 2, 3, 4, 5]; //esse é o array que você terá que iterar
-
-// função callback
-// Ela apenas imprime o elemento na posição do index e de que array ele veio
-function callbackMap(element, index, array) {
-  return `Número ${element} no index: ${index}, veio desse array: ${array}`;
+const arrayMap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
+function callback(elemento, index, array){
+  return elemento +10  
 }
-
-function map(array, callback) {
-  //sua lógica
-}
-
-//console.table(map(arrayMap, callbackMap));
-
-//Método Filter ---------
-
-const arrayFilter = [1, 2, 3, 4, 5]; //esse é o array que você terá que iterar
-
-// função callback
-// Ela apenas imprime o elemento que for maior que 2
-function callbackFilter(element, index, array) {
-  if (element > 2 && index && array.length > 2) {
-    return true;
+function map(array, callback){
+  let novoArrayMap = []
+  for (let i = 0; i <array.length; i++){
+    novoArrayMap.push(callback (array[i], i, array))
   }
+  return novoArrayMap
 }
-
-function filter(array, callback) {
-  //sua lógica
+map(arrayMap, callback)
+function FiltrarImpar(arrayMap){
+  let arrayImpar = []
+  for (let i = 0; i < arrayMap.length; i++) {
+    if (arrayMap[i] % 2 == 1) {
+      arrayImpar.push(arrayMap[i])
+    } 
+  } 
+    return arrayImpar
 }
-
-//console.log(filter(arrayFilter, callbackFilter));
-
-//Método Reduce ---------
-
-const arrayReduce = [1, 2, 3, 4, 5]; //esse é o array que você terá que iterar
-
-// função callback
-// Ela apenas soma os valores, como um acumulador mesmo
-function callbackReduce(acumulator, valorAtual) {
-  return acumulator + valorAtual;
+FiltrarImpar(arrayMap)
+function callbackReduce(numero, valorAtual) {
+  return numero + valorAtual
 }
-
 function reduce(array, callback, initialValue = 0) {
-  //sua lógica
+  let novoArrayReduce = []
+  for( let i = 0; i < array.length; i++){
+  novoArrayReduce.push(callbackReduce(array[i], i, array))
+  }
+  return novoArrayReduce
 }
+reduce(arrayMap,callbackReduce)
 
-// console.log(reduce(arrayReduce, callbackReduce));
-// console.log(reduce(arrayReduce, callbackReduce, 50));
+
+
+
+
