@@ -20,19 +20,15 @@ function FiltrarImpar(arrayMap){
     return arrayImpar
 }
 FiltrarImpar(arrayMap)
-function callbackReduce(numero, valorAtual) {
-  return numero + valorAtual
+function callbackReduce(acumulador, valor) {
+  return acumulador + valor
 }
 function reduce(array, callback, initialValue = 0) {
-  let novoArrayReduce = []
   for( let i = 0; i < array.length; i++){
-  novoArrayReduce.push(callbackReduce(array[i], i, array))
+   initialValue = callback(initialValue, array[i])
   }
-  return novoArrayReduce
+  return initialValue
 }
 reduce(arrayMap,callbackReduce)
-
-
-
 
 
